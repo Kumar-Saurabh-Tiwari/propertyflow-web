@@ -22,6 +22,10 @@ export class CalendarApiService {
   private http = inject(HttpClient);
   private readonly baseUrl = environment.apiUrl;
 
+  checkHealth(): Observable<{ status: string }> {
+    return this.http.get<{ status: string }>(`${this.baseUrl}/health`);
+  }
+
   getCalendar(start: string, end: string): Observable<CalendarDay[]> {
     return this.http
       .get<CalendarResponse>(`${this.baseUrl}/calendar`, { params: { start, end } })

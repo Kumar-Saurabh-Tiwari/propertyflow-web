@@ -2,6 +2,7 @@ import { Component, inject } from "@angular/core";
 import { CalendarStore } from "../services/calendar-store.service";
 import { DayCell } from "../models/calendar.models";
 import { formatGBP } from "../utils/date-utils";
+import { CalendarApiService } from "../services/calendar-api.service";
 
 @Component({
   selector: "app-calendar",
@@ -162,6 +163,22 @@ import { formatGBP } from "../utils/date-utils";
   `,
 })
 export class CalendarComponent {
+
+  constructor(private api: CalendarApiService) {
+    this.checkHealth();
+  }
+
+  checkHealth() {
+    this.api.checkHealth().subscribe({
+      next: (res) => {
+        console.log('Health check response:', res);
+      },
+      error: (err) => {
+        console.error('Health check error:', err);
+      }
+    })
+  }
+
   store = inject(CalendarStore);
   weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
