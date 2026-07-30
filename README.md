@@ -8,6 +8,9 @@ Built with **Angular 17**, **Tailwind CSS**, and **Angular Signals**
 
 </div>
 
+> ⚙️ **Backend Repository:** [`Kumar-Saurabh-Tiwari/propertyflow-backend`](https://github.com/Kumar-Saurabh-Tiwari/propertyflow-backend)  
+> *Contains API services, database schema, and core business logic for PropertyFlow.*
+
 ---
 
 ## Overview
